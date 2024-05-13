@@ -21,7 +21,7 @@
           </ul>
         </nav>
         
-        <a href="./carrinho.html" class="cart-button" ng-click="addToCart(product.id)"  ng-if="isAuthenticated" >
+        <a href="./carrinho.html" class="cart-button" ng-click="carrinho()"  ng-if="isAuthenticated" >
           <img src="https://icons.iconarchive.com/icons/google/noto-emoji-objects/256/63007-shopping-cart-icon.png" alt="Carrinho" class="cart-icon">
       </a>
 
@@ -30,33 +30,16 @@
     </a>
 
       <a href="./login.html" ng-if="!isAuthenticated"><button>Entrar</button></a>
-      <a href="./index.html" ng-if="isAuthenticated"><button>Sair</button></a>
+      <a href="./index.html" ng-if="isAuthenticated"> <button ng-click="logout()">Sair</button></a>
       </header>
 
       <section class="product-section">
-        <h2>Guitarras</h2>
+        <h2>Guitarras e Violões</h2>
         <div class="product-container">
          
           
           <div class="product-card" ng-repeat="product in products">
-            <img src="https://static.mundomax.com.br/produtos/82542/550/1.webp">
-            <h3>{{product.name}}</h3>
-            <p>{{product.description}}</p>
-            <span class="price">{{product.price | currency}}</span>
-             <button class="add-to-cart-button" ng-click="addToCart(product.id)">Adicionar ao Carrinho +</button>
-          </div>
-
-          </div>
-
-          
-      </section>
-    
-      <section class="product-section">
-        <h2>Violões</h2>
-        <div class="product-container">
-          
-          <div class="product-card" ng-repeat="product in products">
-            <img src="https://static.mundomax.com.br/produtos/82542/550/1.webp">
+            <img ng-src="{{product.imageUrl}}">
             <h3>{{product.name}}</h3>
             <p>{{product.description}}</p>
             <span class="price">{{product.price | currency}}</span>
@@ -73,7 +56,5 @@
       <script src="./assets/script/services/session.service.js"></script>
       <script src="./assets/script/services/admin.service.js"></script>
       <script src="./assets/script/controllers/index.js"></script>
-
-
 </body>
 </html>

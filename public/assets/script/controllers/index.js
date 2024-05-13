@@ -6,14 +6,15 @@ app.controller('HomeController', ($scope, $http, AdminService, SessionService) =
             $http.get('http://localhost:3333/api/products')
             .then((response) => {
                 $scope.products = response.data;
-                console.log('entrou');
+                console.log($scope.products)
             })
-        console.log($scope.products)
         } catch (error) {
-            console.log('errou');
+            console.log('erro');
         }
     }
     $scope.getProducts();
+
+    $scope.productCart = []
 
     $scope.addToCart = (productId)=>{
         if(!$scope.isAuthenticated) {
@@ -27,8 +28,16 @@ app.controller('HomeController', ($scope, $http, AdminService, SessionService) =
             headers: {
                 Authorization: `Bearer ${SessionService.getToken()}`
             }
-        })
+        }).then((response) => {
+            $scope.productCart = response.data;
+            console.log('produto', $scope.productCart);
+        });
     }
+
+    $scope.carrinho = () => {
+        location.href = './carrinho.html'
+    }
+    
 
     SessionService.verifyLogin(false)
     $scope.logout = SessionService.logout
@@ -41,4 +50,6 @@ app.controller('HomeController', ($scope, $http, AdminService, SessionService) =
         console.log("isAuthenticated", $scope.isAuthenticated)
         $scope.$apply()
     })
+
+    SessionService.verifyLogin();
 })

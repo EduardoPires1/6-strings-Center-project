@@ -24,6 +24,12 @@ export class ProductsRepository {
         return products
     }
 
+    async getProduct(id) {
+        const product = await this.prisma.product.findUnique({ where: { id } })
+
+        return product
+    }
+
     async updateProduct({ id, name, description, price, imageUrl }) {
         const product = await this.prisma.product.update({
             where: {

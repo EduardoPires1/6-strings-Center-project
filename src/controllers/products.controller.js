@@ -12,6 +12,12 @@ export class ProductsController {
         return res.json(products)
     }
 
+    getProduct = async (req, res) => {
+        const id = Number(req.params.id)
+        const product = await this.repository.getProduct(id)
+        return res.json(product)
+    }
+
     createProduct = async (req, res) => {
         const product = req.body;
 

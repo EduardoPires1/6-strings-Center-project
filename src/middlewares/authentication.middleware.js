@@ -15,12 +15,10 @@ export function authenticationMiddleware(req, res, next) {
         jwt.verify(token, 'Eduardo')
 
         const decoded = jwt.decode(token)
-        console.log('decoded', decoded);
         req.user = decoded;
 
         next()
     } catch (e) {
         return res.status(401).json({ message: 'Invalid token.' })
     }
-
 }

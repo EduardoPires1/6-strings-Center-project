@@ -15,6 +15,7 @@ app.controller('AdminEditProductController', ($scope, $http, SessionService, Adm
     $scope.handleSubmit = () => {
         const searchParams = new URLSearchParams(location.search)
         const productId = searchParams.get('productId')
+        console.log('ID: ' + productId )
 
         $http.patch('http://localhost:3333/api/products/' + productId, {
             name: $scope.name,
@@ -26,6 +27,7 @@ app.controller('AdminEditProductController', ($scope, $http, SessionService, Adm
                 Authorization: `Bearer ${SessionService.getToken()}`
             }
         }).then(() => {
+            console.log('produto atualizado com sucesso')
             location.href = "/admin"
         })
     }

@@ -21,13 +21,13 @@ app.controller('LoginController', ($scope, $http) => {
         })
     }
 
-    // $scope.verifyLogin = () => {
-    //     const token = localStorage.getItem('token')
+    $scope.verifyLogin = () => {
+        const token = localStorage.getItem('token')
 
-    //     if (token) {
-    //         location.href = "/loja.html"
-    //     }
-    // }
+        if (token) {
+            location.href = "/loja.html"
+        }
+    }
 
-    // $scope.verifyLogin()
+    $scope.verifyLogin()
 })
