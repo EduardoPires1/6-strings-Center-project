@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="loja-virtual">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="https://icons.iconarchive.com/icons/dtafalonso/ios7-desktop/256/Garage-Band-icon.png" type="image/x-icon">
+    <link rel="stylesheet" href="./assets/style/login.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <title>Entrar</title>
+</head>
+<body id="login-page" ng-controller="LoginController">
+    <header>
+      <div class="storeName">
+        <h1><img src="https://icons.iconarchive.com/icons/dtafalonso/ios7-desktop/256/Garage-Band-icon.png" alt="">6-strings</h1>
+        <h2>Center</h2>
+    </div>
+        <nav>
+          <ul>
+            <li><a href="./index.html">Página Inicial</a></li>
+          </ul>
+        </nav>
+        <a href="./carrinho.html" class="cart-button">
+          <img src="https://icons.iconarchive.com/icons/google/noto-emoji-objects/256/63007-shopping-cart-icon.png" alt="Carrinho" class="cart-icon">
+      </a>
+        <a href="./login.html"><button>Entrar</button></a>
+      </header>
+
+      <div class="signin-box">
+        <h2>Faça Login!</h2>
+        <form name="loginUserForm" ng-submit="handleSubmit()">
+          <input type="email" name="email" ng-model="email" placeholder="Email..." required ng-required="true">
+
+          <span ng-if="loginUserForm.email.$error.required">
+            *O Email é obrigatório.
+        </span>
+        <span ng-if="loginUserForm.email.$error.email">
+          *Insira um e-mail válido.
+      </span>
+
+          <input type="password" name="password" ng-model="password" placeholder="Senha..." required ng-required="true" ng-minlength="6">
+
+          <span class="text-danger" ng-if="loginUserForm.email.$error.required">
+            *A senha é obrigatória.
+        </span>
+        <span class="text-danger" ng-if="loginUserForm.email.$error.minlength">
+            *A senha deve ter pelo menos 6 caracteres.
+        </span>
+        <span class="text-danger" ng-if="loginError">
+            *Email ou senha inválidos.
+        </span>
+
+          <button type="submit" ng-disabled="loginUserForm.$invalid || loading">
+            {{ loading ? 'Enviando...' : 'Entrar' }}</button>
+        </form>
+    </div>
+    <script src="./assets/script/controllers/login.js"></script>
+    <script src="./assets/script/lib/jwt-decode.js"></script>
+    <script src="./assets/script/app.js"></script>
+    <script src="./assets/script/services/session.service.js"></script>
+    <script src="./assets/script/services/admin.service.js"></script>
+</body>
+</html>

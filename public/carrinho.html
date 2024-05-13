@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en"  ng-app="loja-virtual">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="https://icons.iconarchive.com/icons/dtafalonso/ios7-desktop/256/Garage-Band-icon.png" type="image/x-icon">
+    <link rel="stylesheet" href="./assets/style/carrinho.css">
+    <title>Carrinho</title>
+</head>
+<body  id="cart-page" ng-controller="CartController">
+
+    <header>
+        <div class="storeName">
+          <h1><img src="https://icons.iconarchive.com/icons/dtafalonso/ios7-desktop/256/Garage-Band-icon.png" alt="">6-strings</h1>
+          <h2>Center</h2>
+      </div>
+          <nav>
+            <ul>
+              <li><a href="./index.html">Página Inicial</a></li>
+            </ul>
+          </nav>
+          <a href="./carrinho.html" class="cart-button">
+            <img src="https://icons.iconarchive.com/icons/google/noto-emoji-objects/256/63007-shopping-cart-icon.png" alt="Carrinho" class="cart-icon">
+        </a>
+          <a href="./login.html"><button>Entrar</button></a>
+        </header>
+
+        <div class="container">
+            <div ng-if="items.length > 0">
+                    <div ng-repeat="item in items">
+                        <img ng-src="{{item.product.imageUrl}}">
+                            <h4>{{item.product.name}}</h4>
+                                    <div class="input-group">
+                                        <button ng-disabled="item.quantity <= 1" ng-click="decrease(item.id)"
+                                            type="button">-</button>
+                                        <input ng-change="onQuantityChange(item.id)" type="text"
+                                             placeholder=""
+                                             ng-model="item.quantity">
+                                        <button ng-click="increase(item.id)"
+                                            type="button">+</button>
+    
+                                <p><strong>Valor:</strong> {{item.price | currency}}</p>
+                                <p><strong>Subtotal:</strong> {{item.price * item.quantity | currency}}</p>
+                        <button ng-click="deleteCartItem(item.product.id)" type="button" class="col-md-1 btn text-danger opacity-50">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" viewBox="0 0 256 256"><path d="M216,48H176V40a24,24,0,0,0-24-24H104A24,24,0,0,0,80,40v8H40a8,8,0,0,0,0,16h8V208a16,16,0,0,0,16,16H192a16,16,0,0,0,16-16V64h8a8,8,0,0,0,0-16ZM96,40a8,8,0,0,1,8-8h48a8,8,0,0,1,8,8v8H96Zm96,168H64V64H192ZM112,104v64a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Zm48,0v64a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Z"></path></svg>
+                        </button>
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <h3>Realizar compra</h3>
+                        <p><strong>Total:</strong> {{total | currency}}</p>
+                        <button ng-click="closeCart()">Finalizar compra</button>
+                    </div>
+                </div>
+            </div>
+    
+            <div ng-if="items.length == 0">
+                <div>
+                    <p>Nenhum item no carrinho. <a href="./loja.html"><button> Veja nossos produtos!</button></a></p>
+                </div>
+            </div>
+        </div>
+
+        <script src="./assets/script/lib/jwt-decode.js"></script>
+        <script src="./assets/script/app.js"></script>
+        <script src="./assets/script/services/session.service.js"></script>
+        <script src="./assets/script/services/admin.service.js"></script>
+        <script src="./assets/script/controllers/carrinho.js"></script>
+    
+</body>
+</html>

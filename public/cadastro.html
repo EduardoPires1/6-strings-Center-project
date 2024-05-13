@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="loja-virtual">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="https://icons.iconarchive.com/icons/dtafalonso/ios7-desktop/256/Garage-Band-icon.png" type="image/x-icon">
+    <link rel="stylesheet" href="./assets/style/cadastro.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <title>Crie sua conta</title>
+</head>
+<body ng-controller="CreateAccountController">
+
+    <header>
+      <div class="storeName">
+        <h1><img src="https://icons.iconarchive.com/icons/dtafalonso/ios7-desktop/256/Garage-Band-icon.png" alt="">6-strings</h1>
+        <h2>Center</h2>
+    </div>
+        <nav>
+          <ul>
+            <li><a href="./index.html">Página Inicial</a></li>
+            <li><a href="./loja.html">Loja</a></li>
+          </ul>
+        </nav>
+        <a href="./carrinho.html" class="cart-button">
+          <img src="https://icons.iconarchive.com/icons/google/noto-emoji-objects/256/63007-shopping-cart-icon.png" alt="Carrinho" class="cart-icon">
+      </a>
+        <a href="./login.html"><button>Entrar</button></a>
+      </header>
+
+
+      <div class="signup-box">
+        <h2>Crie sua conta !</h2>
+        <p>É fácil e rápido.</p>
+        <form name="createUserForm" ng-submit="handleSubmit()">
+
+          <input type="text" placeholder="Nome de Usuário..." required ng-model="name" ng-required="true">
+
+          <input type="email" name="email" ng-model="email" placeholder="Email..." required ng-required="true">
+
+          <input type="password"  name="password" ng-model="password"  placeholder="Senha..." required ng-required="true" ng-minlength="6">
+
+          <input type="password"  name="passwordConfirmation" ng-model="passwordConfirmation"
+          placeholder="Confirmação de Senha..." required  ng-required="true">
+
+          <button type="submit" ng-disabled="createUserForm.$invalid || loading">
+            {{ loading ? 'Enviando...' : 'Criar conta' }}</button>
+        </form>
+    </div>
+
+<script src="./assets/script/controllers/cadastro.js"></script>
+</body>
+</html>

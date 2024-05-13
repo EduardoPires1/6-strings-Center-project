@@ -1,0 +1,121 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    background: url(https://images.unsplash.com/photo-1564186763535-ebb21ef5277f?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D) no-repeat center center fixed;
+    background-size: cover;
+    background-color: rgba(255, 255, 255, 0.5);
+  }
+  
+  header {
+    background-color: #222222;
+    color: #fff;
+    padding: 15px;
+    text-align: center;
+    display: flex;justify-content: space-around;
+    align-items: center;
+  }
+
+  .storeName {
+    display: ruby;
+
+  }
+  
+ .storeName h1 {
+    color: #ffa53e;
+ }
+
+ .storeName h1 img {
+    width: 50px;
+ }
+  
+  nav ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  nav ul li {
+    display: inline;
+    margin-right: 20px;
+  }
+  
+  nav ul li a {
+    text-decoration: none;
+    color: #fff;
+    transition: color 0.3s ease;
+  }
+  
+  nav ul li a:hover {
+    color: #ccc;
+  }
+  
+  button {
+    background-color: #ffa53e;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #fd8700;
+  }
+
+  .cart-button {
+    display: inline-block;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+}
+.cart-icon {
+    width: 32px;
+    height: 32px;
+}
+
+    .banner {
+        position: fixed;
+        top: 132px;
+        left: 0;
+        width: 100%;
+        height: calc(100vh - 60px); 
+        background-color: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(6px); 
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+        color: #fff;
+        z-index: 999; 
+    }
+
+
+  
+  .banner h2 {
+    color: #fd8700;;
+    margin-bottom: 20px;
+    font-size: 36px;
+  }
+  
+  .banner p {
+    color: white;
+    margin-bottom: 40px;
+    font-size: 18px;
+  }
+  
+  .banner .button {
+    padding: 10px 20px;
+    background-color: #ffa53e;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .banner .button:hover {
+    background-color: #fd8700;
+  }

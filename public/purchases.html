@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="loja-virtual">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="https://icons.iconarchive.com/icons/dtafalonso/ios7-desktop/256/Garage-Band-icon.png" type="image/x-icon">
+    <title>Compras</title>
+    <link rel="stylesheet" href="./assets/style/purchases.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+</head>
+
+<body ng-controller="PurchasesController" id="purchases">
+    <header>
+        <div class="storeName">
+          <h1><img src="https://icons.iconarchive.com/icons/dtafalonso/ios7-desktop/256/Garage-Band-icon.png" alt="">6-strings</h1>
+          <h2>Center</h2>
+      </div>
+          <nav>
+            <ul>
+              <li><a href="./index.html">Página Inicial</a></li>
+            </ul>
+          </nav>
+          
+          <a href="./carrinho.html" class="cart-button" ng-click="addToCart(product.id)"  ng-if="isAuthenticated" >
+            <img src="https://icons.iconarchive.com/icons/google/noto-emoji-objects/256/63007-shopping-cart-icon.png" alt="Carrinho" class="cart-icon">
+        </a>
+  
+        <a href="./admin/index.html" class="admin-button" ng-if="isAuthenticated && isAdmin" >
+          <img src="https://icons.iconarchive.com/icons/pelfusion/christmas-shadow-2/256/Crown-icon.png" alt="Carrinho" class="cart-icon">
+      </a>
+  
+        <a href="./index.html" ng-if="isAuthenticated"><button>Sair</button></a>
+
+        </header>
+
+    <div class="container">
+                <h1>Minhas compras</h1>
+                <div ng-repeat="cart in carts">
+                    <span>#{{cart.id}}</span>
+                    <span></span>{{cart.closedAt}}</span>
+
+                    <div>
+                        <div ng-repeat="item in cart.items">
+                            <img src="{{item.product.imageUrl}}" alt="{{item.product.name}}">
+                            <div>
+                                <h5>{{item.product.name}}</h5>
+                                <div>
+                                    <p>{{item.price | currency}}</p>
+                                    <p>x{{item.quantity}}</p>
+                                    <p>{{item.price * item.quantity | currency}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <p>
+                        <strong>Total: </strong>
+                        {{cart.total | currency}}
+                    </p>
+                </div>
+                <p ng-if="carts.length == 0">
+                    Nenhum produto encontrado.
+                </p>
+            </div>
+        </div>
+    </div>
+
+        <script src="./assets/script/app.js"></script>
+        <script src="./assets/script/lib/jwt-decode.js"></script>
+        <script src="./assets/script/services/admin.service.js"></script>
+        <script src="./assets/script/services/session.service.js"></script>
+        <script src="./assets/script/controllers/purchases.js"></script>
+</body>
+
+</html>

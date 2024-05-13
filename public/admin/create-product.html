@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="loja-virtual">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="https://icons.iconarchive.com/icons/dtafalonso/ios7-desktop/256/Garage-Band-icon.png" type="image/x-icon">
+    <title>Adicionar Produto - 6-strings Admin</title>
+    <link rel="stylesheet" href="./styles/createProduct.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+</head>
+
+<body ng-controller="AdminCreateProductController" id="create-product">
+    <header>
+        <div class="storeName">
+            <h1><img src="https://icons.iconarchive.com/icons/dtafalonso/ios7-desktop/256/Garage-Band-icon.png" alt="">6-strings</h1>
+            <h2>Center</h2>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="../index.html">Página Inicial</a></li>
+            </ul>
+        </nav>
+        <a href="../carrinho.html" class="cart-button">
+            <img src="https://icons.iconarchive.com/icons/google/noto-emoji-objects/256/63007-shopping-cart-icon.png" alt="Carrinho" class="cart-icon">
+        </a>
+        <a href="../index.html"><button ng-click="logout()">Sair</button></a>
+    </header>
+
+    <div class="container">
+                <div class="products">
+                    <h1>Adicionar produto</h1>
+                    <a href="./index.html"><button class="backBtn">Voltar</button></a>
+                </div>
+
+                <form ng-submit="handleSubmit()">
+                    <img class="d-block"
+                        ng-src="{{imageUrl || 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Placeholder_view_vector.svg/991px-Placeholder_view_vector.svg.png'}}"
+                        alt=".">
+
+                    <label">
+                        <strong>Nome do produto:</strong>
+                        <input ng-model="name" type="text" placeholder="Insira o nome do produto.">
+                    </label>
+                    <label>
+                        <strong>Preço do produto:</strong>
+                        <input ng-model="price" ng-change="formatPrice()" type="text"
+                            placeholder="Insira o preço do produto.">
+                    </label>
+                    <label>
+                        <strong>Descrição do produto:</strong>
+                        <textarea ng-model="description"
+                            placeholder="Insira a descrição do produto."></textarea>
+                    </label>
+                    <label>
+                        <strong>Link da imagem do produto:</strong>
+                        <input ng-model="imageUrl" type="text" class="form-control"
+                            placeholder="Insira o link da imagem do produto.">
+                    </label>
+
+                    <br>
+
+                    <button type="submit">Cadastrar</button>
+                </form>
+    </div>
+
+        <script src="../assets/script/app.js"></script>
+        <script src="../assets/script/lib/jwt-decode.js"></script>
+        <script src="../assets/script/services/admin.service.js"></script>
+        <script src="../assets/script/services/session.service.js"></script>
+        <script src="../assets/script/controllers/admin-create-product.controller.js"></script>
+</body>
+
+</html>
